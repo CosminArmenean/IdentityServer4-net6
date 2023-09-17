@@ -28,7 +28,7 @@ namespace IdentityServerHost.Configuration
             new[]
             {
                 // local API scope
-                new ApiScope(LocalApi.ScopeName),
+                new ApiScope(IdentityServer4.IdentityServerConstants.LocalApi.ScopeName),
 
                 // resource specific scopes
                 new ApiScope("resource1.scope1"),
