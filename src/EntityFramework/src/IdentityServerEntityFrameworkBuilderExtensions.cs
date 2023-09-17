@@ -1,18 +1,22 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Interfaces;
-using IdentityServer4.EntityFramework.Services;
-using IdentityServer4.EntityFramework.Stores;
-using IdentityServer4.Stores;
+
 using System;
 using IdentityServer4.EntityFramework.Options;
 using IdentityServer4.EntityFramework;
 using IdentityServer4.EntityFramework.Storage;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Interfaces;
+using IdentityServer4.EntityFramework.Stores;
+using IdentityServer4.EntityFramework.Services;
+using IdentityServer4.Stores;
+using Microsoft.EntityFrameworkCore;
+using IdentityServer4.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -48,9 +52,10 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             builder.Services.AddConfigurationDbContext<TContext>(storeOptionsAction);
 
-            builder.AddClientStore<ClientStore>();
-            builder.AddResourceStore<ResourceStore>();
-            builder.AddCorsPolicyService<CorsPolicyService>();
+            builder.Services
+                .AddTransient<IClientStore, ClientStore>()
+                .AddTransient<IResourceStore, ResourceStore>()
+                .AddTransient<CorsPolicyService>();
 
             return builder;
         }
@@ -63,15 +68,17 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IIdentityServerBuilder AddConfigurationStoreCache(
             this IIdentityServerBuilder builder)
         {
-            builder.AddInMemoryCaching();
+            builder.Services.AddMemoryCache();
 
-            // add the caching decorators
-            builder.AddClientStoreCache<ClientStore>();
-            builder.AddResourceStoreCache<ResourceStore>();
-            builder.AddCorsPolicyCache<CorsPolicyService>();
+            builder.Services
+               .AddTransient<IClientStore, ClientStore>()
+               .AddTransient<IResourceStore, ResourceStore>()
+               .AddTransient<CorsPolicyService>();
 
+           
             return builder;
         }
+
 
         /// <summary>
         /// Configures EF implementation of IPersistedGrantStore with IdentityServer.
