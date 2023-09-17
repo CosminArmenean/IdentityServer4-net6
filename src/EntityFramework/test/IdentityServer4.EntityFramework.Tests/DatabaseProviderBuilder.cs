@@ -4,6 +4,8 @@
 
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace IdentityServer4.EntityFramework.IntegrationTests
 {
     /// <summary>
@@ -12,10 +14,15 @@ namespace IdentityServer4.EntityFramework.IntegrationTests
     public class DatabaseProviderBuilder
     {
         public static DbContextOptions<T> BuildInMemory<T>(string name) where T : DbContext
-        {
-            var builder = new DbContextOptionsBuilder<T>();
-            builder.UseInMemoryDatabase(name);
-            return builder.Options;
+        {          
+
+            return new DbContextOptionsBuilder<T>()
+                    .UseInMemoryDatabase(name)
+                    .Options;
+            //var builder = new DbContextOptionsBuilder<T>();
+
+            //builder.UseInMemoryDatabase(name);
+            //return builder.Options;
         }
 
         public static DbContextOptions<T> BuildSqlite<T>(string name) where T : DbContext
