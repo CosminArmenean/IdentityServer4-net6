@@ -1,4 +1,4 @@
-# This is a forked version of archived IdentityServer4 project ported from .net core 3.1 to .net6
+# This is a forked version of archived IdentityServer4 project ported from .net core 3.1 to .net7
 Link to original project:
 https://github.com/IdentityServer/IdentityServer4
 All the rest of the project was left as-is - only this message was added and projects underneath ./src/IdentityServer4/IdentityServer4.sln solution were adapted to be compatible with .net6
