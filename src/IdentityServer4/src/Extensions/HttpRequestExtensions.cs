@@ -1,4 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -37,6 +37,8 @@ namespace IdentityServer4.Extensions
             {
                 // Content-Type: application/x-www-form-urlencoded; charset=utf-8
                 return header.MediaType.Equals("application/x-www-form-urlencoded", StringComparison.OrdinalIgnoreCase);
+                //return header.MediaType.Equals("application/json", StringComparison.OrdinalIgnoreCase);
+
             }
 
             return false;
