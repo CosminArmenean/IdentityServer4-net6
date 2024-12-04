@@ -2,8 +2,8 @@
   
   <PropertyGroup>
     <PackageId>IdentityServer4</PackageId>
-    <TargetFramework>net7.0</TargetFramework>
-    <Description>.net 7 Fork. OpenID Connect and OAuth 2.0 Framework for .NET Core</Description>
+    <TargetFramework>net8.0</TargetFramework>
+    <Description>.net 8 Fork. OpenID Connect and OAuth 2.0 Framework for .NET Core</Description>
     <Authors>Brock Allen;Dominick Baier</Authors>
     <AssemblyName>IdentityServer4</AssemblyName>
     <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer</PackageTags>
@@ -44,10 +44,10 @@
     <PackageReference Include="IdentityModel" Version="6.2.0" />
 
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="7.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="7.4.0" />
 
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.14" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,9 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Interfaces;
@@ -13,6 +10,9 @@ using IdentityServer4.Stores;
 using IdentityServer4.Stores.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IdentityServer4.EntityFramework.Stores
 {
@@ -44,8 +44,8 @@ namespace IdentityServer4.EntityFramework.Stores
         /// <param name="serializer">The serializer</param>
         /// <param name="logger">The logger.</param>
         public DeviceFlowStore(
-            IPersistedGrantDbContext context, 
-            IPersistentGrantSerializer serializer, 
+            IPersistedGrantDbContext context,
+            IPersistentGrantSerializer serializer,
             ILogger<DeviceFlowStore> logger)
         {
             Context = context;
@@ -141,7 +141,7 @@ namespace IdentityServer4.EntityFramework.Stores
             var deviceFlowCodes = (await Context.DeviceFlowCodes.Where(x => x.DeviceCode == deviceCode).ToArrayAsync())
                 .SingleOrDefault(x => x.DeviceCode == deviceCode);
 
-            if(deviceFlowCodes != null)
+            if (deviceFlowCodes != null)
             {
                 Logger.LogDebug("removing {deviceCode} device code from database", deviceCode);
 
